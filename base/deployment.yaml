@@ -17,7 +17,6 @@ spec:
           image: quay.io/keycloak/keycloak
           args:
             - start
-            - --optimized
           envFrom:
             - configMapRef:
                 name: keycloak-config
