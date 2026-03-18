@@ -41,6 +41,11 @@ spec:
                 secretKeyRef:
                   name: keycloak-admin
                   key: password
+            - name: KC_DB_UR
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-database
+                  key: url
           ports:
             - name: http
               containerPort: 8080
