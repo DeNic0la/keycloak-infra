@@ -7,6 +7,9 @@ resources:
   - base/service.yaml
   - base/deployment.yaml
   - base/ingress.yaml
+### Sealed Secrets
+  - sealedsecret_keycloak-admin.yaml
+  - sealedsecret_keycloak-database.yaml
 
 configMapGenerator:
   - name: keycloak-config
