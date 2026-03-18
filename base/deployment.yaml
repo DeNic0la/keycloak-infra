@@ -25,12 +25,12 @@ spec:
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-db
+                  name: keycloak-database
                   key: username
             - name: KC_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-db
+                  name: keycloak-database
                   key: password
             - name: KC_BOOTSTRAP_ADMIN_USERNAME
               valueFrom:
