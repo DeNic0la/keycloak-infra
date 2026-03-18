@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: denic0la.ch
+spec:
+  secretName: keycloak-tls
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer
+  commonName: keycloak.denic0la.ch
+  dnsNames:
+    - keycloak.denic0la.ch
