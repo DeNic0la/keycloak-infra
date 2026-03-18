@@ -24,6 +24,9 @@ configMapGenerator:
       - KC_METRICS_ENABLED=true
       - KC_HOSTNAME=keycloak.denic0la.ch
       - KC_HOSTNAME_STRICT=true
+      - KC_DB_POOL_INITIAL_SIZE=1
+      - KC_DB_POOL_MAX_SIZE=6
+      - KC_DB_URL_PROPERTIES=sslmode=require
 
 generatorOptions:
   disableNameSuffixHash: true
