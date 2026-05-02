@@ -166,6 +166,19 @@ Recommended rollout process:
 For automation, rely on the command exit code rather than parsing the metadata
 format.
 
+Current manifest behavior in this repo:
+
+- the deployment uses `RollingUpdate` with `maxSurge: 1` and
+  `maxUnavailable: 0`
+- `minReadySeconds: 30` means the replacement pod must stay Ready for 30
+  seconds before Kubernetes treats it as available and starts removing the old
+  pod
+- if the new pod never becomes Ready or flaps during that 30-second window, the
+  old pod stays in place and the rollout stalls instead of cutting traffic over
+- plain Kubernetes Deployments do not automatically run `rollout undo`; if a
+  bad revision becomes available and later proves faulty, trigger
+  `kubectl rollout undo deployment/keycloak -n keycloak`
+
 ## IPv4 and IPv6
 
 Keycloak documents IP stack selection through `JAVA_OPTS_APPEND`.

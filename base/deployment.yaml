@@ -4,6 +4,14 @@ metadata:
   name: keycloak
 spec:
   replicas: 1
+  minReadySeconds: 30
+  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       app.kubernetes.io/name: keycloak
@@ -30,6 +38,13 @@ spec:
             - configMapRef:
                 name: keycloak-config
           env:
+            - name: KC_HOSTNAME
+              value: keycloak.denic0la.ch
+            - name: KC_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-database
+                  key: url
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
