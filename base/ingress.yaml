@@ -4,8 +4,7 @@ metadata:
   name: keycloak
   annotations:
     nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
-    cert-manager.io/cluster-issuer: letsencrypt-issuer
-    cert-manager.io/common-name: keycloak.denic0la.ch
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   tls:

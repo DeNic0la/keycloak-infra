@@ -12,11 +12,20 @@ spec:
       labels:
         app.kubernetes.io/name: keycloak
     spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak
           args:
             - start
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           envFrom:
             - configMapRef:
                 name: keycloak-config
@@ -41,11 +50,8 @@ spec:
                 secretKeyRef:
                   name: keycloak-admin
                   key: password
-            - name: KC_DB_UR
-              valueFrom:
-                secretKeyRef:
-                  name: keycloak-database
-                  key: url
+            - name: JAVA_OPTS_KC_HEAP
+              value: "-Xms512m -Xmx2g"
           ports:
             - name: http
               containerPort: 8080

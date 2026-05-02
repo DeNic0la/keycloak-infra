@@ -1,0 +1,6 @@
+.idea
+.idea/copilot.data.migration.ask2agent.xml
+*.iml
+keycloak-infra.iml
+secret_*.yaml
+*/secret_*.yaml

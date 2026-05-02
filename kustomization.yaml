@@ -23,7 +23,7 @@ configMapGenerator:
       - KC_PROXY_HEADERS=xforwarded
       - KC_HEALTH_ENABLED=true
       - KC_METRICS_ENABLED=true
-      - KC_HOSTNAME=keycloak.denic0la.ch
+      - KC_HOSTNAME=https://keycloak.denic0la.ch
       - KC_HOSTNAME_STRICT=true
       - KC_DB_POOL_INITIAL_SIZE=1
       - KC_DB_POOL_MAX_SIZE=6
@@ -34,4 +34,4 @@ generatorOptions:
 
 images:
   - name: quay.io/keycloak/keycloak
-    newTag: "26.0.0"
+    newTag: "26.6.1"
