@@ -3,14 +3,7 @@ kind: Kustomization
 
 namespace: keycloak
 
-resources:
-  - base/service.yaml
-  - base/deployment.yaml
-  - base/ingress.yaml
-  - certificate_keycloak.yaml
-### Sealed Secrets
-  - sealedsecret_keycloak-admin.yaml
-  - sealedsecret_keycloak-database.yaml
+
 
 configMapGenerator:
   - name: keycloak-config
@@ -23,7 +16,7 @@ configMapGenerator:
       - KC_PROXY_HEADERS=xforwarded
       - KC_HEALTH_ENABLED=true
       - KC_METRICS_ENABLED=true
-      - KC_HOSTNAME=https://keycloak.denic0la.ch
+      - KC_HOSTNAME=keycloak.denic0la.ch
       - KC_HOSTNAME_STRICT=true
       - KC_DB_POOL_INITIAL_SIZE=1
       - KC_DB_POOL_MAX_SIZE=6
@@ -32,6 +25,18 @@ configMapGenerator:
 generatorOptions:
   disableNameSuffixHash: true
 
+
+resources:
+  - base/service.yaml
+  - base/deployment.yaml
+  - base/ingress.yaml
+  - certificate_keycloak.yaml
+  ### Sealed Secrets
+  - sealedsecret_keycloak-admin.yaml
+  - sealedsecret_keycloak-database.yaml
+
+
+
 images:
-  - name: quay.io/keycloak/keycloak
-    newTag: "26.6.1"
+  - name: ghcr.io/denic0la/keycloak-image
+    newTag: "sha-d0df193"
