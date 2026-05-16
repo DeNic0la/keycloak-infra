@@ -33,5 +33,5 @@ generatorOptions:
   disableNameSuffixHash: true
 
 images:
-  - name: ghcr.io/denic0la/keycloak-image
-    newTag: "sha-d0df193"
+  - name: quay.io/keycloak/keycloak
+    newTag: "26.6.1"

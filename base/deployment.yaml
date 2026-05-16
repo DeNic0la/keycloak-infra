@@ -38,13 +38,6 @@ spec:
             - configMapRef:
                 name: keycloak-config
           env:
-            - name: KC_HOSTNAME
-              value: keycloak.denic0la.ch
-            - name: KC_DB_URL
-              valueFrom:
-                secretKeyRef:
-                  name: keycloak-database
-                  key: url
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
